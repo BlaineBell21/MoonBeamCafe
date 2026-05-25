@@ -6,7 +6,7 @@ import java.util.Optional;
 public enum OrderScreenOption {
 
     ADD_ITEM(1, "Add Item"),
-    ADD_SIGNATURE_DRINK(2, "Add Signature Drink"),
+    ADD_SEASONAL_DRINK(2, "Add Seasonal Drink"),
     ADD_SIDE(3, "Add Side"),
     CHECKOUT(4, "Checkout"),
     CANCEL_ORDER(0, "Cancel Order");

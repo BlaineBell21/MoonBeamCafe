@@ -35,11 +35,12 @@ public class HomeScreen {
         }
         while (true){
             switch (choice){
-                case NEW_ORDER ->OrderScreen.orderScreenDisplay();
-                //case BROWSE_MENU ->
-                case EXIT -> {
-                    return;
-                }
+            case NEW_ORDER:
+                OrderScreen.orderScreenDisplay();
+                return;
+            //case BROWSE_MENU ->
+            case EXIT:
+                return;
             }
         }
     }

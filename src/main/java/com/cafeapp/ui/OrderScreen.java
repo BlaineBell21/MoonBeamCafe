@@ -35,13 +35,20 @@ public class OrderScreen {
 
         while (true){
             switch(choice) {
-                case ADD_ITEM -> OrderBuilderScreen.addItems();
-                case ADD_SIGNATURE_DRINK -> OrderBuilderScreen.addSignatureDrink();
-                case ADD_SIDE -> OrderBuilderScreen.addSide();
-                case CHECKOUT -> CheckoutScreen.checkout();
-                case CANCEL_ORDER -> {
+                case ADD_ITEM:
+                    DrinkBuilderScreen.addDrinkUI();
                     return;
-                }
+                case ADD_SEASONAL_DRINK:
+                    DrinkBuilderScreen.addSignatureDrink();
+                    return;
+                case ADD_SIDE:
+                    DrinkBuilderScreen.addSide();
+                    return;
+                case CHECKOUT:
+                    CheckoutScreen.checkout();
+                    return;
+                case CANCEL_ORDER:
+                    return;
             }
         }
     }
