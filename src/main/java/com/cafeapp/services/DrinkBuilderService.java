@@ -1,34 +1,25 @@
-package com.cafeapp.ui;
+package com.cafeapp.services;
 
 import com.cafeapp.enums.DrinkSize;
-import com.cafeapp.enums.DrinkType;
+import com.cafeapp.enums.DrinkBase;
 import com.cafeapp.enums.ToppingType;
 import com.cafeapp.models.Drink;
+import com.cafeapp.ui.OrderScreen;
 import com.cafeapp.utils.InputHelper;
 import com.cafeapp.utils.ListUtils;
 
 import java.util.ArrayList;
 
-public class DrinkBuilderScreen {
+public class DrinkBuilderService {
 
     private static ArrayList<ToppingType> toppings = new ArrayList<>();
-    //private static Drink newDrink = new Drink(drinkSizeDisplay(), drinkTypeDisplay(), toppings);
 
-    public static Drink addDrinkUI(){
+    public static void addDrinkUI(){
         DrinkSize size = drinkSizeDisplay();
-        DrinkType type = drinkTypeDisplay();
+        DrinkBase type = drinkBaseDisplay();
         toppingType();
         Drink newDrink = new Drink(type.getLabel(),size.getBaseCost(),size,type, toppings);
-        return newDrink;
-
-    }
-
-    public static void test(){
-
-    }
-
-    public static void clearDrink(){
-
+        OrderScreen.getOrder().addItem(newDrink);
     }
 
     public static void drinkSizeUI(){
@@ -43,56 +34,62 @@ public class DrinkBuilderScreen {
             drinkSizeUI();
             int choice = InputHelper.readIntInput("Enter in the number of your choice: ");
             selectedChoice = DrinkSize.fromCode(choice).orElse(null);
-            selectedChoice = drinkSizeOptions(selectedChoice);
             if (selectedChoice != null) {
+                drinkSizeOptions(selectedChoice);
                 return selectedChoice;
             }
-            System.out.println("Invalid choice, try again.");
+            System.out.println("Invalid choice, try again");
         }
     }
 
-    public static DrinkSize drinkSizeOptions(DrinkSize choice){
-        if(choice == null){
-            System.out.println("Invalid Option. Please try again.");
-            return null;
+    public static void drinkSizeOptions(DrinkSize choice){
+
+        switch (choice) {
+            case SMALL -> {
+                System.out.println("small selected");
+            }
+            case MEDIUM ->{
+                System.out.println("medium selected");
+            }
+            case LARGE ->{
+            }
         }
-        return switch (choice) {
-            case SMALL -> DrinkSize.SMALL;
-            case MEDIUM -> DrinkSize.MEDIUM;
-            case LARGE -> DrinkSize.LARGE;
-        };
     }
 
-    public static void drinkTypeUI(){
-        ListUtils.genericMenuDisplay(DrinkType.values());
+    public static void drinkBaseUI(){
+        ListUtils.genericMenuDisplay(DrinkBase.values());
         System.out.println();
     }
 
-    public static DrinkType drinkTypeDisplay(){
-        System.out.println("Select your drink type: ");
-        DrinkType selectedChoice;
+    public static DrinkBase drinkBaseDisplay(){
+        System.out.println("Select your drink base: ");
+        DrinkBase selectedChoice;
         while (true){
-            drinkTypeUI();
+            drinkBaseUI();
             int choice = InputHelper.readIntInput("Enter in the number of your choice: ");
-            selectedChoice = DrinkType.fromCode(choice).orElse(null);
-            selectedChoice = drinkTypeOptions(selectedChoice);
+            selectedChoice = DrinkBase.fromCode(choice).orElse(null);
             if (selectedChoice != null) {
+                drinkBaseOptions(selectedChoice);
                 return selectedChoice;
             }
-            System.out.println("Invalid choice, try again.");
         }
     }
 
-    public static DrinkType drinkTypeOptions(DrinkType choice){
-        if(choice == null){
-            System.out.println("Invalid Option. Please try again.");
-            return null;
-        }
-        return switch (choice) {
-            case LATTE -> DrinkType.LATTE;
-            case ESPRESSO -> DrinkType.ESPRESSO;
-            case BLACK_TEA -> DrinkType.BLACK_TEA;
-            case GREEN_TEA -> DrinkType.GREEN_TEA;
+    public static void drinkBaseOptions(DrinkBase choice){
+
+        switch (choice) {
+            case LATTE -> {
+                System.out.println("latte selected");
+            }
+            case ESPRESSO -> {
+                System.out.println("espresso selected");
+            }
+            case BLACK_TEA -> {
+                System.out.println("black tea selected");
+            }
+            case GREEN_TEA -> {
+                System.out.println("green tea selected");
+            }
         };
     }
 
@@ -253,12 +250,4 @@ public class DrinkBuilderScreen {
             }
         }
     }
-
-    public static void addSignatureDrink(){
-        System.out.println("add sig");
-    }
-    public static void addSide(){
-        System.out.println("add side");
-    }
-
 }

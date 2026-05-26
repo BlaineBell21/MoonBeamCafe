@@ -1,12 +1,12 @@
 package com.cafeapp.ui;
 
-
-
 import com.cafeapp.enums.menus.OrderScreenOption;
-import com.cafeapp.models.Drink;
 import com.cafeapp.models.Order;
+import com.cafeapp.services.DrinkBuilderService;
+import com.cafeapp.services.SideService;
 import com.cafeapp.utils.InputHelper;
 import com.cafeapp.utils.ListUtils;
+
 
 public class OrderScreen {
     private static Order currentOrder;
@@ -21,7 +21,6 @@ public class OrderScreen {
 
     public static void orderScreenDisplay(){
         currentOrder = new Order();
-        System.out.println("order screen");
         orderScreen();
         OrderScreenOption selectedChoice;
         do{
@@ -40,22 +39,24 @@ public class OrderScreen {
         }
         switch(choice) {
             case ADD_ITEM:
-                Drink drink = DrinkBuilderScreen.addDrinkUI();
-                currentOrder.addItem(drink);
+               DrinkBuilderService.addDrinkUI();
                 break;
             case ADD_SEASONAL_DRINK:
-                DrinkBuilderScreen.addSignatureDrink();
+                //DrinkBuilderService.addSignatureDrink();
                 break;
             case ADD_SIDE:
-                DrinkBuilderScreen.addSide();
+                SideService.addSideUI();
                 break;
             case CHECKOUT:
                 CheckoutScreen.checkout();
                 break;
-            case EDIT_ORDER:
+            case VIEW_ORDER:
             case CANCEL_ORDER:
         }
+    }
 
+    public static Order getOrder(){
+        return currentOrder;
     }
 }
 

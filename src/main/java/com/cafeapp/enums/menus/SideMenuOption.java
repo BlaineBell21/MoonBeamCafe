@@ -5,19 +5,15 @@ import com.cafeapp.interfaces.Displayable;
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum OrderScreenOption implements Displayable {
-
-    ADD_ITEM(1, "Add Item"),
-    ADD_SEASONAL_DRINK(2, "Add Seasonal Drink"),
-    ADD_SIDE(3, "Add Side"),
-    CHECKOUT(4, "Checkout"),
-    VIEW_ORDER(5, "View Order"),
-    CANCEL_ORDER(0, "Cancel Order");
+public enum SideMenuOption implements Displayable {
+    COMPLIMENTARY_SIDES(1, "Complimentary Sides"),
+    MAINS(2, "Mains"),
+    EXIT(3, "Exit");
 
     private final int code;
     private final String label;
 
-    OrderScreenOption(int code, String label) {
+    SideMenuOption(int code, String label) {
         this.code = code;
         this.label = label;
     }
@@ -29,8 +25,7 @@ public enum OrderScreenOption implements Displayable {
     public String getLabel() {
         return label;
     }
-
-    public static Optional<OrderScreenOption> fromCode(int code) {
+    public static Optional<SideMenuOption> fromCode(int code) {
         return Arrays.stream(values())
                 .filter(option -> option.code == code)
                 .findFirst();
