@@ -1,10 +1,12 @@
 package com.cafeapp.enums;
 
 
+import com.cafeapp.interfaces.Displayable;
+
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum DrinkSize {
+public enum DrinkSize implements Displayable {
     SMALL(1,"Small",3.50),
     MEDIUM(2,"Medium",9),
     LARGE(3,"Large",8.50);

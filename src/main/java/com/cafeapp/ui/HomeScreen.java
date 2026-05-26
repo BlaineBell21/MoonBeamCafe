@@ -2,6 +2,7 @@ package com.cafeapp.ui;
 
 import com.cafeapp.enums.menus.MainMenuOption;
 import com.cafeapp.utils.InputHelper;
+import com.cafeapp.utils.ListUtils;
 
 
 public class HomeScreen {
@@ -10,9 +11,7 @@ public class HomeScreen {
     }
 
     public static void homeScreenUI(){
-        for(MainMenuOption option : MainMenuOption.values()){
-            System.out.printf("%-3d) - %s%n", option.getCode(), option.getLabel());
-        }
+        ListUtils.genericMenuDisplay(MainMenuOption.values());
         System.out.println();
     }
 
@@ -33,15 +32,12 @@ public class HomeScreen {
             System.out.println("Invalid Option. Please try again.");
             return;
         }
-        while (true){
-            switch (choice){
-            case NEW_ORDER:
-                OrderScreen.orderScreenDisplay();
-                return;
-            //case BROWSE_MENU ->
-            case EXIT:
-                return;
-            }
+
+        switch (choice){
+        case NEW_ORDER:
+            OrderScreen.orderScreenDisplay();
+            break;
+        case EXIT:
         }
     }
 }

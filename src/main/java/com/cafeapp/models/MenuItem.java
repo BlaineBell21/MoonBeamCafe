@@ -1,21 +1,23 @@
 package com.cafeapp.models;
 
-abstract class MenuItem {
+public class MenuItem {
     private final String itemLabel;
-    private final String typeOfItem;
+    private double basePrice;
 
-
-    public MenuItem(String itemLabel, String typeOfItem) {
+    public MenuItem(String itemLabel, double basePrice) {
         this.itemLabel = itemLabel;
-        this.typeOfItem = typeOfItem;
+        this.basePrice = basePrice;
     }
 
     public String getItemLabel() {
         return itemLabel;
     }
 
-    public String getTypeOfItem() {
-        return typeOfItem;
+    public double getBasePrice() {
+        return basePrice;
     }
 
+    public void setBasePrice(double basePrice) {
+        this.basePrice = basePrice;
+    }
 }

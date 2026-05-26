@@ -1,9 +1,11 @@
 package com.cafeapp.enums;
 
+import com.cafeapp.interfaces.Displayable;
+
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum DrinkType {
+public enum DrinkType implements Displayable {
     LATTE(1,"Latte"),
     ESPRESSO(2,"Espresso"),
     BLACK_TEA(3,"Black Tea"),

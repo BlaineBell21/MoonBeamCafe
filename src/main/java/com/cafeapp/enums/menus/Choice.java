@@ -1,11 +1,11 @@
 package com.cafeapp.enums.menus;
 
-import com.cafeapp.enums.DrinkType;
+import com.cafeapp.interfaces.Displayable;
 
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum Choice {
+public enum Choice implements Displayable {
 
     YES(1, "Yes"),
     NO(2, "No");

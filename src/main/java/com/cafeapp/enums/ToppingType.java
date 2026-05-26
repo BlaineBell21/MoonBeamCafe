@@ -1,9 +1,8 @@
 package com.cafeapp.enums;
 
-import java.util.Arrays;
-import java.util.Optional;
+import com.cafeapp.interfaces.Displayable;
 
-public enum ToppingType {
+public enum ToppingType implements Displayable {
 
     EXTRA_ESPRESSO_SHOT(1,"Extra Espresso Shot", "Booster"),
     ENERGY_BOOST_SYRUP(2,"Energy Boost Syrup", "Booster"),
@@ -50,9 +49,4 @@ public enum ToppingType {
         return type;
     }
 
-    public static Optional<ToppingType> fromCode(int code, String label) {
-        return Arrays.stream(values())
-                .filter(option -> option.label.equals("Premium"))
-                .findFirst();
-    }
 }

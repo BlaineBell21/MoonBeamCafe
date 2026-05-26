@@ -1,49 +1,30 @@
 package com.cafeapp.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
-    private ArrayList<String> drinks;
-    private ArrayList<String> sides;
-    private ArrayList<Double> prices;
-    private ArrayList<String> receiptInformation;
+    private List<MenuItem> items;
 
-    public Order(ArrayList<String> drinks, ArrayList<String> sides, ArrayList<Double> prices, ArrayList<String> receiptInformation) {
-        this.drinks = drinks;
-        this.sides = sides;
-        this.prices = prices;
-        this.receiptInformation = receiptInformation;
+    public Order(){
+        items = new ArrayList<>();
     }
 
-    public ArrayList<String> getDrinks() {
-        return drinks;
+    public void addItem(MenuItem item){
+        items.add(item);
     }
 
-    public void setDrinks(ArrayList<String> drinks) {
-        this.drinks = drinks;
+    public void removeItem(MenuItem item){
+        items.remove(item);
     }
 
-    public ArrayList<String> getSides() {
-        return sides;
+    public void clearItems(MenuItem item){
+        items.clear();
     }
 
-    public void setSides(ArrayList<String> sides) {
-        this.sides = sides;
-    }
-
-    public ArrayList<Double> getPrices() {
-        return prices;
-    }
-
-    public void setPrices(ArrayList<Double> totals) {
-        this.prices = totals;
-    }
-
-    public ArrayList<String> getReceiptInformation() {
-        return receiptInformation;
-    }
-
-    public void setReceiptInformation(ArrayList<String> receiptInformation) {
-        this.receiptInformation = receiptInformation;
+    public void displayOrder(){
+        for (MenuItem item : items){
+            System.out.println(item);
+        }
     }
 }

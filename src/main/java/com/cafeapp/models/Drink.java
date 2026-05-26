@@ -7,12 +7,13 @@ import com.cafeapp.enums.ToppingType;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class Drink {
+public class Drink extends MenuItem{
     private final DrinkSize size;
     private final DrinkType type;
     private ArrayList<ToppingType> toppings;
 
-    public Drink(DrinkSize size, DrinkType type, ArrayList<ToppingType> toppings) {
+    public Drink(String itemLabel, double basePrice, DrinkSize size, DrinkType type, ArrayList<ToppingType> toppings) {
+        super(itemLabel, basePrice);
         this.size = size;
         this.type = type;
         this.toppings = toppings;
@@ -26,7 +27,11 @@ public class Drink {
         return type.getLabel();
     }
 
-    public String getToppings() {
+    public ArrayList<ToppingType> getToppings(){
+        return toppings;
+    }
+
+    public String getToppingFormat() {
         return toppings.stream()
                 .map(ToppingType::getLabel)
                 .collect(Collectors.joining(", "));
@@ -46,7 +51,7 @@ public class Drink {
                 """,
                 getSize(),
                 getType(),
-                getToppings()
+                getToppingFormat()
         );
     }
 

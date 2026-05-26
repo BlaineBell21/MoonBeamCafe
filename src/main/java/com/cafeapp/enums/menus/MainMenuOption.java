@@ -1,9 +1,11 @@
 package com.cafeapp.enums.menus;
 
+import com.cafeapp.interfaces.Displayable;
+
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum MainMenuOption {
+public enum MainMenuOption implements Displayable {
     NEW_ORDER(1, "Place an Order"),
     //BROWSE_MENU(2, "Browse Menu"),
     EXIT(2, "Exit");

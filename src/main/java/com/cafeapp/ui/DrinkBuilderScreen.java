@@ -5,25 +5,34 @@ import com.cafeapp.enums.DrinkType;
 import com.cafeapp.enums.ToppingType;
 import com.cafeapp.models.Drink;
 import com.cafeapp.utils.InputHelper;
+import com.cafeapp.utils.ListUtils;
 
 import java.util.ArrayList;
 
 public class DrinkBuilderScreen {
 
-    private static final ArrayList<ToppingType> toppings = new ArrayList<>();
+    private static ArrayList<ToppingType> toppings = new ArrayList<>();
+    //private static Drink newDrink = new Drink(drinkSizeDisplay(), drinkTypeDisplay(), toppings);
 
-    public static void addDrinkUI(){
+    public static Drink addDrinkUI(){
         DrinkSize size = drinkSizeDisplay();
         DrinkType type = drinkTypeDisplay();
         toppingType();
-        Drink newDrink = new Drink(size,type, toppings);
-        System.out.println(newDrink);
+        Drink newDrink = new Drink(type.getLabel(),size.getBaseCost(),size,type, toppings);
+        return newDrink;
+
+    }
+
+    public static void test(){
+
+    }
+
+    public static void clearDrink(){
+
     }
 
     public static void drinkSizeUI(){
-        for(DrinkSize option : DrinkSize.values()){
-            System.out.printf("%-1d ) %s%n", option.getCode(), option.getLabel());
-        }
+        ListUtils.genericMenuDisplay(DrinkSize.values());
         System.out.println();
     }
 
@@ -55,9 +64,7 @@ public class DrinkBuilderScreen {
     }
 
     public static void drinkTypeUI(){
-        for(DrinkType option : DrinkType.values()){
-            System.out.printf("%-1d ) %s%n", option.getCode(), option.getLabel());
-        }
+        ListUtils.genericMenuDisplay(DrinkType.values());
         System.out.println();
     }
 
@@ -253,7 +260,5 @@ public class DrinkBuilderScreen {
     public static void addSide(){
         System.out.println("add side");
     }
-    public static ArrayList<ToppingType> getToppings(){
-        return toppings;
-    }
+
 }
