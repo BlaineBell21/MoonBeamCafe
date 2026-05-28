@@ -2,6 +2,7 @@ package com.cafeapp.services;
 
 import com.cafeapp.enums.drink.DrinkSize;
 import com.cafeapp.enums.drink.DrinkBase;
+import com.cafeapp.enums.drink.DrinkSpecialization;
 import com.cafeapp.enums.topping.ToppingCategory;
 import com.cafeapp.enums.topping.ToppingType;
 import com.cafeapp.models.Drink;
@@ -14,13 +15,17 @@ import java.util.ArrayList;
 public class DrinkBuilderService {
 
     private static ArrayList<ToppingType> toppings = new ArrayList<>();
+    // array that stores user's toppings
 
     public static void addDrinkUI(){
         DrinkSize size = drinkSizeDisplay();
         DrinkBase type = drinkBaseDisplay();
         toppingType();
-        Drink newDrink = new Drink(type.getLabel(),size.getBaseCost(),size,type, toppings);
-        OrderScreen.getOrder().addItem(newDrink);
+        DrinkSpecialization specialization = itemSpecializationDisplay();
+        Drink newDrink = new Drink(type.getLabel(),size.getBaseCost(),size,type, toppings, specialization);
+        // creates a new drink object that stores the drink label (name),
+        // base cost (based on cup size), size of cup, type of drink and an array of toppings
+        OrderScreen.getOrder().addItem(newDrink);// adds new drink into order object to be stored for later
     }
 
     public static void drinkSizeUI(){
@@ -31,12 +36,15 @@ public class DrinkBuilderService {
     public static DrinkSize drinkSizeDisplay(){
         System.out.println("Select your drink size: ");
         DrinkSize selectedChoice;
+        //stores user's choice
         while (true){
             drinkSizeUI();
             int choice = InputHelper.readIntInput("Enter in the number of your choice: ");
             selectedChoice = DrinkSize.fromCode(choice).orElse(null);
+            //checks if user's choice is a valid input in the DrinkSize enum otherwise returns null
             if (selectedChoice != null) {
                 drinkSizeOptions(selectedChoice);
+                //takes user's input to drink size options
                 return selectedChoice;
             }
             System.out.println("Invalid choice, try again");
@@ -44,7 +52,7 @@ public class DrinkBuilderService {
     }
 
     public static void drinkSizeOptions(DrinkSize choice){
-
+        //tells user what size cup was selected
         switch (choice) {
             case SMALL -> {
                 System.out.println("small selected");
@@ -53,31 +61,37 @@ public class DrinkBuilderService {
                 System.out.println("medium selected");
             }
             case LARGE ->{
+                System.out.println("large selected");
             }
         }
     }
 
     public static void drinkBaseUI(){
         ListUtils.genericMenuDisplay(DrinkBase.values());
+        // prints DrinkBase values
         System.out.println();
     }
 
     public static DrinkBase drinkBaseDisplay(){
         System.out.println("Select your drink base: ");
         DrinkBase selectedChoice;
+        //stores user's choice
         while (true){
             drinkBaseUI();
             int choice = InputHelper.readIntInput("Enter in the number of your choice: ");
             selectedChoice = DrinkBase.fromCode(choice).orElse(null);
+            //checks if user's choice is a valid input in the DrinkBase enum otherwise returns null
             if (selectedChoice != null) {
                 drinkBaseOptions(selectedChoice);
+                // takes user's input to drink base options
                 return selectedChoice;
+                // returns selected base
             }
         }
     }
 
     public static void drinkBaseOptions(DrinkBase choice){
-
+        // tells user what drink base is selected
         switch (choice) {
             case LATTE -> {
                 System.out.println("latte selected");
@@ -120,6 +134,7 @@ public class DrinkBuilderService {
             System.out.println("Add more toppings?");
             int choice = InputHelper.choice().getCode();
             if (choice == 2){
+                //allows user choice to add different types of toppings otherwise exits topping menu
                 return;
             }
         }
@@ -127,6 +142,7 @@ public class DrinkBuilderService {
     public static void toppingUI(ToppingCategory category){
         for(ToppingType option : ToppingType.values()){
             if (option.getCategory() == category){
+                // loops through premium, regular, or booster toppings based on which is inputted
                 System.out.printf("%-1d ) %s%n", option.getCode(), option.getLabel());
             }
         }
@@ -138,6 +154,7 @@ public class DrinkBuilderService {
 
         while(true){
             ToppingCategory category = ToppingCategory.PREMIUM;
+            //sets topping category to premium to loop through premium toppings in toppingUI
             toppingUI(category);
             String selectedChoice = InputHelper.readStringInput("Enter the number of one of the following toppings: ");
 
@@ -165,6 +182,7 @@ public class DrinkBuilderService {
 
         while(true){
             ToppingCategory category = ToppingCategory.REGULAR;
+            //sets topping category to regular to loop through regular toppings in toppingUI
             toppingUI(category);
             String selectedChoice = InputHelper.readStringInput("Enter the number of one of the following toppings: ");
 
@@ -207,6 +225,7 @@ public class DrinkBuilderService {
 
         while(true){
             ToppingCategory category = ToppingCategory.BOOSTER;
+            //sets topping category to booster to loop through booster toppings in toppingUI
             toppingUI(category);
             String selectedChoice = InputHelper.readStringInput("Enter the number of one of the following toppings: ");
 
@@ -237,10 +256,39 @@ public class DrinkBuilderService {
     }
 
     public static void itemSpecializationUI(){
-
+        System.out.println("Add specialization to your order: ");
+        ListUtils.genericMenuDisplay(DrinkSpecialization.values());
+        System.out.println();
     }
 
-    public static void itemSpecializationDisplay(){
+    public static DrinkSpecialization itemSpecializationDisplay(){
+        //allows user to add a set specialization option to drink
+        DrinkSpecialization selectedChoice;
+        while(true){
+            itemSpecializationUI();
+            int choice = InputHelper.readIntInput("Enter in the number of your choice: ");
+            selectedChoice = DrinkSpecialization.fromCode(choice).orElse(null);
+            if(selectedChoice != null){
+                drinkSpecializationOptions(selectedChoice);
+                return selectedChoice;
+            }
+        }
+    }
 
+    public static void drinkSpecializationOptions(DrinkSpecialization choice){
+        switch (choice) {
+            case NONE -> {
+                System.out.println("Standard drink preparation with no specialty enhancements.");
+            }
+            case MOON_FOAM -> {
+                System.out.println("A smooth layer of flavored cream foam that gives the drink a soft, cloud-like finish inspired by moonlight.");
+            }
+            case GALAXY_SWIRL -> {
+                System.out.println("A vibrant syrup swirl blended throughout the drink to create a colorful cosmic effect with extra sweetness.");
+            }
+            case NITRO_INFUSION -> {
+                System.out.println("Infused with nitro for a creamy texture and velvety finish with a subtle sparkling sensation.");
+            }
+        }
     }
 }

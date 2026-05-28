@@ -13,11 +13,14 @@ import java.util.ArrayList;
 public class SideService {
 
     private static ArrayList<SideType> sideTypes = new ArrayList<>();
+    //array containing all user sides selected
 
     public static void addSideUI(){
         sideMainMenuDisplay();
         for (SideType sideType : sideTypes) {
+            //loops through sideTypes array
             Side newSide = new com.cafeapp.models.Side(sideType.getLabel(), sideType.getCategory().getPrice(), sideType.getCategory());
+            //loops through all of user's selected sides and creates new side objects
             OrderScreen.getOrder().addItem(newSide);
         }
     }

@@ -16,12 +16,13 @@ public class InputHelper {
         System.out.println();
     }
 
-    public static Choice choice(){
+    public static Choice choice(){ // method for user to input yes/no
         Choice selectedChoice;
         while (true){
             choiceUI();
             int choice = InputHelper.readIntInput("Enter in the number of your choice: ");
             selectedChoice = Choice.fromCode(choice).orElse(null);
+            // validates if user's input is a value that exists
             if (selectedChoice != null) {
                 return selectedChoice;
             }
@@ -29,6 +30,7 @@ public class InputHelper {
         }
     }
 
+    //used to gather string input
     public static String readStringInput(String prompt){
         while (true) {
             System.out.print(prompt);
@@ -41,6 +43,7 @@ public class InputHelper {
         }
     }
 
+    //used to gather int input
     public static int readIntInput(String prompt){
         while (true) {
             System.out.print(prompt);

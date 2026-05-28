@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public enum DrinkSize implements Displayable {
+    // contains drink size and cost values
     SMALL(1,"Small",3.50),
     MEDIUM(2,"Medium",9),
     LARGE(3,"Large",8.50);
@@ -35,6 +36,7 @@ public enum DrinkSize implements Displayable {
     }
 
     public static Optional<DrinkSize> fromCode(int code) {
+        //takes in int input to check if it is a value that exists in the enums
         return Arrays.stream(values())
                 .filter(option -> option.code == code)
                 .findFirst();

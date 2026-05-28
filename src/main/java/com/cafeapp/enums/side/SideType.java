@@ -1,6 +1,7 @@
 package com.cafeapp.enums.side;
 
 public enum SideType {
+    // enum containing all available main and complimentary sides
     ORBIT_MACARON(1, "Orbit Macaron", "Colorful assorted macarons inspired by planets.", SideCategory.COMPLIMENTARY),
     GALAXY_CAKE_POP(2, "Galaxy Cake Pop", "Chocolate cake pop coated with star sprinkles.", SideCategory.COMPLIMENTARY),
     STARFALL_SCONE(3, "Starfall Scone", "Vanilla lavender scone with light glaze.", SideCategory.COMPLIMENTARY),

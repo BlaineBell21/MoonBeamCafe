@@ -3,6 +3,7 @@ package com.cafeapp.enums.topping;
 import com.cafeapp.interfaces.Displayable;
 
 public enum ToppingType implements Displayable {
+    // enum containing all available toppings
 
     EXTRA_ESPRESSO_SHOT(1,"Extra Espresso Shot", ToppingCategory.BOOSTER),
     ENERGY_BOOST_SYRUP(2,"Energy Boost Syrup", ToppingCategory.BOOSTER),

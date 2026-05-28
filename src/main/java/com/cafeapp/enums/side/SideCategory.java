@@ -1,6 +1,7 @@
 package com.cafeapp.enums.side;
 
 public enum SideCategory {
+    // enum for side categories and prices
     COMPLIMENTARY(0),
     MAIN(1.50);
 

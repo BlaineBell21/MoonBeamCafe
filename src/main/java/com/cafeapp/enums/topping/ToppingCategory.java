@@ -1,9 +1,11 @@
 package com.cafeapp.enums.topping;
 
 public enum ToppingCategory {
+    //contains all premium, regular, and booster topping prices
+
     /*premium toppings & xtra cheese
    small: .75$ base, .30 xtra
-   medmium: 1.50$ base, .60 xtra
+   medium: 1.50$ base, .60 xtra
    large: 2.25$ base, .90 xtra
     */
     PREMIUM(.75,1.50, 2.25, .30, .60, .90),

@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public enum OrderScreenOption implements Displayable {
-
-    ADD_ITEM(1, "Add Drink"),
+    // enum for order screen option values
+    ADD_DRINK(1, "Add Drink"),
     ADD_SEASONAL_ITEM(2, "Add Seasonal item"),
     ADD_SIDE(3, "Add Sides"),
     CHECKOUT(4, "Checkout"),
@@ -31,6 +31,7 @@ public enum OrderScreenOption implements Displayable {
     }
 
     public static Optional<OrderScreenOption> fromCode(int code) {
+        //takes in int input to check if it is a value that exists in the enums
         return Arrays.stream(values())
                 .filter(option -> option.code == code)
                 .findFirst();

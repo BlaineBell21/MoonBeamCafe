@@ -2,6 +2,7 @@ package com.cafeapp.models;
 
 import com.cafeapp.enums.drink.DrinkSize;
 import com.cafeapp.enums.drink.DrinkBase;
+import com.cafeapp.enums.drink.DrinkSpecialization;
 import com.cafeapp.enums.topping.ToppingCategory;
 import com.cafeapp.enums.topping.ToppingType;
 
@@ -12,12 +13,22 @@ public class Drink extends MenuItem{
     private final DrinkSize size;
     private final DrinkBase category;
     private ArrayList<ToppingType> toppings;
+    private final DrinkSpecialization specialization;
 
-    public Drink(String itemLabel, double basePrice, DrinkSize size, DrinkBase category, ArrayList<ToppingType> toppings) {
+    public Drink(String itemLabel, double basePrice, DrinkSize size, DrinkBase category, ArrayList<ToppingType> toppings, DrinkSpecialization specialization) {
         super(itemLabel, basePrice);
         this.size = size;
         this.category = category;
         this.toppings = toppings;
+        this.specialization = specialization;
+    }
+
+    public DrinkBase getCategory() {
+        return category;
+    }
+
+    public String getSpecialization() {
+        return specialization.getLabel();
     }
 
     public DrinkSize getSize() {

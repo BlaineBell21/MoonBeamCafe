@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public enum MainMenuOption implements Displayable {
+    // enums for main menu option values
     NEW_ORDER(1, "Place an Order"),
-    //BROWSE_MENU(2, "Browse Menu"),
     EXIT(2, "Exit");
 
     private final String label;
@@ -27,6 +27,7 @@ public enum MainMenuOption implements Displayable {
     }
 
     public static Optional<MainMenuOption> fromCode(int code) {
+        //takes in int input to check if it is a value that exists in the enums
         return Arrays.stream(values())
                 .filter(option -> option.code == code)
                 .findFirst();

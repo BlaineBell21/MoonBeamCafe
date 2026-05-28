@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public enum DrinkBase implements Displayable {
+    // contains drink base/type values
     LATTE(1,"Latte"),
     ESPRESSO(2,"Espresso"),
     BLACK_TEA(3,"Black Tea"),
@@ -27,6 +28,7 @@ public enum DrinkBase implements Displayable {
         return label;
     }
     public static Optional<DrinkBase> fromCode(int code) {
+        //takes in int input to check if it is a value that exists in the enums
         return Arrays.stream(values())
                 .filter(option -> option.code == code)
                 .findFirst();

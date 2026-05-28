@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public enum Choice implements Displayable {
-
+    //reusable enums for yes or no questions
     YES(1, "Yes"),
     NO(2, "No");
 
@@ -26,6 +26,7 @@ public enum Choice implements Displayable {
         return code;
     }
     public static Optional<Choice> fromCode(int code) {
+        //takes in int input to check if it is a value that exists in the enums
         return Arrays.stream(values())
                 .filter(option -> option.code == code)
                 .findFirst();
