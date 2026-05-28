@@ -26,10 +26,16 @@ public class CheckoutScreen {
             int choice = InputHelper.readIntInput("Enter in the number of your choice: ");
             selectedChoice = Choice.fromCode(choice).orElse(null);
             if (selectedChoice == Choice.YES){
-                displayOrderTotal();
-                System.out.println("Order confirmed.\n" +
-                        "Thank you for shopping at MoonBeam Cafe!");
-                return;
+                if (items.isEmpty()){
+                    System.out.println("In order to check out, you must add a drink or main dish.");
+                    System.out.println("Returning to previous menu.");
+                    return;
+                } else {
+                    displayOrderTotal();
+                    System.out.println("Order confirmed.\n" +
+                            "Thank you for shopping at MoonBeam Cafe!");
+                    return;
+                }
             }
         } while (selectedChoice != Choice.NO);
         System.out.println("Returning to previous menu");

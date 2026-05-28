@@ -29,7 +29,9 @@ public class Order {
 
         }
     }
-
+    public boolean isEmpty(){
+        return items.isEmpty();
+    }
 
     public double calculateTotalPrice(){
         double totalAmountDue = 0;
@@ -50,5 +52,8 @@ public class Order {
         for (MenuItem item : items){
             System.out.println(item.getItemLabel());
         }
+    }
+    public String toString(){
+
     }
 }
