@@ -144,10 +144,12 @@ public class Drink extends MenuItem{
                 Size: %s
                 Type: %s
                 Toppings: %s
+                Specialization: %s
                 """,
                 getSize(),
                 getType(),
-                getToppingFormat()
+                getToppingFormat(),
+                getSpecialization()
         );
     }
 

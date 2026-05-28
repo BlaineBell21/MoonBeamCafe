@@ -79,15 +79,6 @@ public class SideService {
                 case "2":
                     sideTypes.add(SideType.GALAXY_CAKE_POP);
                     break;
-                case "3":
-                    sideTypes.add(SideType.STARFALL_SCONE);
-                    break;
-                case "4":
-                    sideTypes.add(SideType.CRESCENT_MOON_CROISSANT);
-                    break;
-                case "5":
-                    sideTypes.add(SideType.LUNAR_BLUEBERRY_MUFFIN);
-                    break;
                 case "0":
                     System.out.println("Returning to previous menu");
                     return;
@@ -121,13 +112,16 @@ public class SideService {
                 case "6":
                     sideTypes.add(SideType.COSMIC_CINNAMON_ROLL);
                     break;
+                case "7":
+                    sideTypes.add(SideType.STARFALL_SCONE);
+                case "8":
+                    sideTypes.add(SideType.CRESCENT_MOON_CROISSANT);
+                case "9":
+                    sideTypes.add(SideType.LUNAR_BLUEBERRY_MUFFIN);
                 case "0":
                     System.out.println("Returning to previous menu");
                     return;
             }
         }
-    }
-    public static ArrayList<SideType> getSides(){
-        return sideTypes;
     }
 }
