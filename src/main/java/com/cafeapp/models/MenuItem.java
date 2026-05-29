@@ -2,7 +2,7 @@ package com.cafeapp.models;
 
 abstract class MenuItem {
     private final String itemLabel;
-    private double basePrice;
+    private final double basePrice;
 
     public MenuItem(String itemLabel, double basePrice) {
         this.itemLabel = itemLabel;
@@ -17,9 +17,6 @@ abstract class MenuItem {
         return basePrice;
     }
 
-    public void setBasePrice(double basePrice) {
-        this.basePrice = basePrice;
-    }
 
     abstract double calculatePrice();
 

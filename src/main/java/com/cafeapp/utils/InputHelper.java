@@ -9,14 +9,14 @@ public class InputHelper {
      private static final Scanner scanner = new Scanner(System.in);
 
     public static void choiceUI(){
-
         for(Choice option : Choice.values()){
             System.out.printf("%-1d ) %s%n", option.getCode(), option.getLabel());
         }
         System.out.println();
     }
 
-    public static Choice choice(){ // method for user to input yes/no
+    public static Choice choice(){
+        // method for user to input yes/no
         Choice selectedChoice;
         while (true){
             choiceUI();
@@ -29,22 +29,8 @@ public class InputHelper {
             invalidInput();
         }
     }
-
-    //used to gather string input
-    public static String readStringInput(String prompt){
-        while (true) {
-            System.out.print(prompt);
-            String input = scanner.nextLine().trim();
-            if (input.isEmpty()){
-                System.out.println("Please enter in valid character input.");
-            } else {
-                return input;
-            }
-        }
-    }
-
-    //used to gather int input
     public static int readIntInput(String prompt){
+        //used to gather int input
         while (true) {
             System.out.print(prompt);
             String input = scanner.nextLine().trim();

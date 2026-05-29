@@ -14,26 +14,16 @@ public class Order {
         items.add(item);
     }
 
-    public void removeItem(MenuItem item){
-        items.remove(item);
-    }
-
     public void clearOrder(){
         items.clear();
     }
 
-    public void getPrice(){
-        for (MenuItem item : items){
-            System.out.println(item.getItemLabel() + " " +
-                    item.getBasePrice());
-
-        }
-    }
     public boolean isEmpty(){
         return items.isEmpty();
     }
 
     public double calculateTotalPrice(){
+        // calculates price of all of user's items in cart
         double totalAmountDue = 0;
         for (MenuItem item : items){
             if (item instanceof Drink drink){
@@ -48,6 +38,7 @@ public class Order {
         return totalAmountDue;
     }
     public void displayOrder(){
+        // displays all items in user's cart
         for (MenuItem item : items){
             System.out.println(item.getItemLabel());
         }

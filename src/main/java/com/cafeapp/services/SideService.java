@@ -12,30 +12,32 @@ import java.util.ArrayList;
 
 public class SideService {
 
-    private static ArrayList<SideType> sideTypes = new ArrayList<>();
-    //array containing all user sides selected
-
+    private static final ArrayList<SideType> sideTypes = new ArrayList<>();
+    // array storing all user selected sides
     public static void addSideUI(){
         sideMainMenuDisplay();
         for (SideType sideType : sideTypes) {
-            //loops through sideTypes array
+            // loops through available sides
             Side newSide = new com.cafeapp.models.Side(sideType.getLabel(), sideType.getCategory().getPrice(), sideType.getCategory());
-            //loops through all of user's selected sides and creates new side objects
+            // loops through all of user's selected sides and creates new side objects
             OrderScreen.getOrder().addItem(newSide);
         }
     }
 
     public static void getSideMainMenuOptionsUI(){
         ListUtils.genericMenuDisplay(SideMenuOption.values());
+        // lists all side main menu options and values
         System.out.println();
     }
 
     public static void sideMainMenuDisplay(){
         SideMenuOption selectedChoice;
+        // stores user's choice
         while (true){
             getSideMainMenuOptionsUI();
             int choice = InputHelper.readIntInput("Enter in the number of your choice: ");
             selectedChoice = SideMenuOption.fromCode(choice).orElse(null);
+            // validates whether the inputted choice exists, if not returns null
             if (selectedChoice != null){
                 sideMainMenuOptions(selectedChoice);
                 return;
@@ -45,7 +47,7 @@ public class SideService {
     }
 
     public static void sideMainMenuOptions(SideMenuOption choice){
-
+        // used for clarity of other developers
         switch (choice){
             case COMPLIMENTARY_SIDES -> complimentarySides();
             case MAINS -> mainSidesDisplay();
@@ -58,8 +60,10 @@ public class SideService {
     public static void sidesUI(SideCategory sideCategory){
         for(SideType option : SideType.values()){
             if (option.getCategory() == sideCategory){
+                // cycles through sides based on inputted category
                 System.out.printf("%-1d ) %s - $%.2f%n", option.getCode(), option.getLabel(), option.getCategory().getPrice());
                 System.out.println(option.getDescription());
+                // prints all sides and their descriptions
             }
         }
         System.out.println("0) Finish");
@@ -67,60 +71,67 @@ public class SideService {
     }
 
     public static void complimentarySides(){
+        // lets user pick through complimentary side options
         while (true){
             SideCategory complimentarySides = SideCategory.COMPLIMENTARY;
             sidesUI(complimentarySides);
-            String selectedChoice = InputHelper.readStringInput("Enter the number of the side you want: ");
+            int selectedChoice = InputHelper.readIntInput("Enter the number of the side you want: ");
 
-            switch(selectedChoice.trim()){
-                case "1":
+            switch(selectedChoice){
+                case 1:
                     sideTypes.add(SideType.ORBIT_MACARON);
                     break;
-                case "2":
+                case 2:
                     sideTypes.add(SideType.GALAXY_CAKE_POP);
                     break;
-                case "0":
+                case 3:
                     System.out.println("Returning to previous menu");
                     return;
             }
         }
     }
 
-
     public static void mainSidesDisplay(){
+        // allows user to pick through main sides
         while (true){
             SideCategory mainSides = SideCategory.MAIN;
             sidesUI(mainSides);
-            String selectedChoice = InputHelper.readStringInput("Enter the number of the side you want: ");
+            int selectedChoice = InputHelper.readIntInput("Enter the number of the side you want: ");
 
             switch(selectedChoice){
-                case "1":
+                case 1:
                     sideTypes.add(SideType.ECLIPSE_LAVA_CAKE);
                     break;
-                case "2":
+                case 2:
                     sideTypes.add(SideType.GALAXY_TIRAMISU);
                     break;
-                case "3":
+                case 3:
                     sideTypes.add(SideType.LUNAR_CHEESECAKE_SLICE);
                     break;
-                case "4":
+                case 4:
                     sideTypes.add(SideType.MILKY_WAY_PARFAIT);
                     break;
-                case "5":
+                case 5:
                     sideTypes.add(SideType.METEORITE_BROWNIE);
                     break;
-                case "6":
+                case 6:
                     sideTypes.add(SideType.COSMIC_CINNAMON_ROLL);
                     break;
-                case "7":
+                case 7:
                     sideTypes.add(SideType.STARFALL_SCONE);
-                case "8":
+                    break;
+                case 8:
                     sideTypes.add(SideType.CRESCENT_MOON_CROISSANT);
-                case "9":
+                    break;
+                case 9:
                     sideTypes.add(SideType.LUNAR_BLUEBERRY_MUFFIN);
-                case "0":
+                    break;
+                case 0:
                     System.out.println("Returning to previous menu");
                     return;
+                default:
+                    InputHelper.invalidInput();
+                    break;
             }
         }
     }

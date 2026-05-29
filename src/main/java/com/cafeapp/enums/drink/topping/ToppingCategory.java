@@ -1,4 +1,4 @@
-package com.cafeapp.enums.topping;
+package com.cafeapp.enums.drink.topping;
 
 public enum ToppingCategory {
     //contains all premium, regular, and booster topping prices

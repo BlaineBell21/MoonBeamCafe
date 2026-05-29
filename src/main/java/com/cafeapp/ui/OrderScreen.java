@@ -12,12 +12,10 @@ import java.io.IOException;
 
 public class OrderScreen {
     private static Order currentOrder;
-    // created an order object to store user's items in
+    // created a main order object to store user's items in
 
-    public static void orderScreen(){
-        System.out.println("Options: ");
-    }
     public static void orderScreenUI(){
+        System.out.println("Options: ");
         ListUtils.genericMenuDisplay(OrderScreenOption.values());
         // prints options from order screen options
         System.out.println();
@@ -26,7 +24,6 @@ public class OrderScreen {
     public static void orderScreenDisplay() throws IOException {
         // creates new order
         currentOrder = new Order();
-        orderScreen();
         OrderScreenOption selectedChoice;
         //stores user's choice
         do{
@@ -41,7 +38,7 @@ public class OrderScreen {
         System.out.println("Returning to main menu.");
     }
 
-    public static void orderScreenOptions(OrderScreenOption choice) throws IOException {
+    public static void orderScreenOptions(OrderScreenOption choice){
         if(choice == null){
             // if choice is null, says input is invalid and returns to previous screen
             System.out.println("Invalid Option. Please try again.");
@@ -52,15 +49,12 @@ public class OrderScreen {
                 // takes user to menu to add a drink to their order
                DrinkBuilderService.addDrinkUI();
                 break;
-            case ADD_SEASONAL_ITEM:
-                //DrinkBuilderService.addSignatureDrink();
-                break;
             case ADD_SIDE:
                 // takes user to menu to add sides to their order
                 SideService.addSideUI();
                 break;
             case CHECKOUT:
-                //takes user to checkout to finalize and confirm order
+                //takes user to check out to finalize and confirm order
                 CheckoutScreen.confirmOrderDisplay();
                 break;
             case CANCEL_ORDER:

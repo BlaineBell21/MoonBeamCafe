@@ -1,4 +1,4 @@
-package com.cafeapp.enums.topping;
+package com.cafeapp.enums.drink.topping;
 
 import com.cafeapp.interfaces.Displayable;
 

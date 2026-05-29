@@ -14,11 +14,8 @@ public class Side extends MenuItem{
 
     @Override
     double calculatePrice() {
+        // gets price of each side
         return category.getPrice();
-    }
-
-    public SideCategory getCategory() {
-        return category;
     }
 
     @Override
@@ -28,7 +25,7 @@ public class Side extends MenuItem{
                 """
                 --------------------------------
                 Side: %s
-                Total: $%.2f
+                $%.2f
                 --------------------------------
                 """,
                 getItemLabel(),

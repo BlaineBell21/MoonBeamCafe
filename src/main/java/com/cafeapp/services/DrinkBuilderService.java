@@ -4,8 +4,8 @@ import com.cafeapp.enums.drink.DrinkSize;
 import com.cafeapp.enums.drink.DrinkBase;
 import com.cafeapp.enums.drink.DrinkSpecialization;
 import com.cafeapp.enums.menus.Choice;
-import com.cafeapp.enums.topping.ToppingCategory;
-import com.cafeapp.enums.topping.ToppingType;
+import com.cafeapp.enums.drink.topping.ToppingCategory;
+import com.cafeapp.enums.drink.topping.ToppingType;
 import com.cafeapp.models.Drink;
 import com.cafeapp.ui.OrderScreen;
 import com.cafeapp.utils.InputHelper;
@@ -307,32 +307,33 @@ public class DrinkBuilderService {
     }
 
     public static void drinkSpecializationOptions(DrinkSpecialization choice){
+        // prints specialization options
         StringBuilder specialDescription = new StringBuilder();
-            switch (choice) {
-                case NONE -> {
-                    specialDescription.append("You chose: ").append(DrinkSpecialization.NONE.getLabel());
-                    specialDescription.append("\n");
-                    specialDescription.append("Standard drink preparation with no specialty enhancements.\n");
-                    System.out.println(specialDescription);
-                }
-                case MOON_FOAM -> {
-                    specialDescription.append("You chose: ").append(DrinkSpecialization.MOON_FOAM.getLabel());
-                    specialDescription.append("\n");
-                    specialDescription.append("A smooth layer of flavored cream foam that gives the drink a soft, cloud-like finish inspired by moonlight.\n");
-                    System.out.println(specialDescription);
-                }
-                case GALAXY_SWIRL -> {
-                    specialDescription.append("You chose: ").append(DrinkSpecialization.GALAXY_SWIRL.getLabel());
-                    specialDescription.append("\n");
-                    specialDescription.append("A vibrant syrup swirl blended throughout the drink to create a colorful cosmic effect with extra sweetness.\n");
-                    System.out.println(specialDescription);
-                }
-                case NITRO_INFUSION -> {
-                    specialDescription.append("You chose: ").append(DrinkSpecialization.NITRO_INFUSION.getLabel());
-                    specialDescription.append("\n");
-                    specialDescription.append("Infused with nitro for a creamy texture and velvety finish with a subtle sparkling sensation.\n");
-                    System.out.println(specialDescription);
-                }
+        switch (choice) {
+            case NONE -> {
+                specialDescription.append("You chose: ").append(DrinkSpecialization.NONE.getLabel());
+                specialDescription.append("\n");
+                specialDescription.append("Standard drink preparation with no specialty enhancements.\n");
+                System.out.println(specialDescription);
             }
+            case MOON_FOAM -> {
+                specialDescription.append("You chose: ").append(DrinkSpecialization.MOON_FOAM.getLabel());
+                specialDescription.append("\n");
+                specialDescription.append("A smooth layer of flavored cream foam that gives the drink a soft, cloud-like finish inspired by moonlight.\n");
+                System.out.println(specialDescription);
+            }
+            case GALAXY_SWIRL -> {
+                specialDescription.append("You chose: ").append(DrinkSpecialization.GALAXY_SWIRL.getLabel());
+                specialDescription.append("\n");
+                specialDescription.append("A vibrant syrup swirl blended throughout the drink to create a colorful cosmic effect with extra sweetness.\n");
+                System.out.println(specialDescription);
+            }
+            case NITRO_INFUSION -> {
+                specialDescription.append("You chose: ").append(DrinkSpecialization.NITRO_INFUSION.getLabel());
+                specialDescription.append("\n");
+                specialDescription.append("Infused with nitro for a creamy texture and velvety finish with a subtle sparkling sensation.\n");
+                System.out.println(specialDescription);
+            }
+        }
     }
 }
