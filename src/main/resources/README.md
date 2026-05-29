@@ -17,14 +17,14 @@ The project demonstrates strong object-oriented programming principles including
 - Polymorphism
 - Abstraction
 
-It also includes receipt generation and file writing functionality.
+As well as receipt generation and file writing functionality.
 
 ---
 
 ## ☕ Features
 
 ### 🧋 Drink Customization
-- Select drink size (Small, Medium, Large)
+- Select drink label (Small, Medium, Large)
 - Choose base drink (Latte, Espresso, Tea, etc.)
 - Add multiple topping categories:
     - Regular
@@ -39,7 +39,6 @@ It also includes receipt generation and file writing functionality.
 
 ### 🧾 Order System
 - Add / remove / clear items
-- View current order
 - Calculate total price dynamically
 - Supports multiple item types via polymorphism
 
@@ -97,23 +96,23 @@ The UML diagram below represents the structure of the application and relationsh
 - `Order` aggregates `MenuItem` objects
 - Enums define fixed configuration sets
 
-📌 *Insert UML image here: `assets/uml-diagram.png`*
+`src/main/assets/diagram.png`*
 
 ---
 
 ## 📸 Screenshots
 
 ### 🏠 Main Menu
-📌 *Insert: `assets/main-menu.png`*
+`src/main/assets/mainMenuScreen.png`*
 
 ### ☕ Drink Builder
-📌 *Insert: `assets/drink-builder.png`*
+`src/main/assets/mainMenuScreen.png`*
 
 ### 🧾 Order Summary
-📌 *Insert: `assets/order-summary.png`*
+`src/main/assets/ReceiptUI.png`*
 
 ### 💳 Receipt Output
-📌 *Insert: `assets/receipt.png`*
+src/main/assets/receiptOutput.png`*
 
 ---
 
@@ -150,15 +149,6 @@ Menus, toppings, and sizes are strongly typed using enums to prevent invalid inp
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Blaine Anthony Bell
 
 Capstone project demonstrating Java OOP design, system architecture, and real-world application structure.
-
----
-
-## ⭐ Acknowledgements
-
-Special focus on applying:
-- Clean OOP architecture
-- Realistic business logic modeling
-- Maintainable Java project structure

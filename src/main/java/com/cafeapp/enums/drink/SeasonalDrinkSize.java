@@ -1,32 +1,40 @@
-package com.cafeapp.enums.menus;
+package com.cafeapp.enums.drink;
 
 import com.cafeapp.interfaces.Displayable;
+
 
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum SideMenuOption implements Displayable {
-    // enum for side menu option values
-    COMPLIMENTARY_SIDES(1, "Complimentary Sides"),
-    MAINS(2, "Mains"),
-    EXIT(0, "Exit");
+public enum SeasonalDrinkSize implements Displayable {
+    SEASONAL_SMALL(1,"Seasonal Small",2),
+    SEASONAL_MEDIUM(2,"Seasonal Medium",2.50),
+    SEASONAL_LARGE(3,"Seasonal Large",3);
 
     private final int code;
+    private final double baseCost;
     private final String label;
 
-    SideMenuOption(int code, String label) {
+    SeasonalDrinkSize(int code, String label, double baseCost){
         this.code = code;
+        this.baseCost = baseCost;
         this.label = label;
     }
 
+    @Override
     public int getCode() {
         return code;
     }
 
+    @Override
     public String getLabel() {
         return label;
     }
-    public static Optional<SideMenuOption> fromCode(int code) {
+
+    public double getBaseCost() {
+        return baseCost;
+    }
+    public static Optional<SeasonalDrinkSize> fromCode(int code) {
         //takes in int input to check if it is a value that exists in the enums
         return Arrays.stream(values())
                 .filter(option -> option.code == code)

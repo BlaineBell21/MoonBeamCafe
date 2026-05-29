@@ -13,7 +13,7 @@ import java.io.IOException;
 public class HomeScreen {
 
     public static void welcomeScreen(){
-        UIHelper.printHeader(MenuUI.TITLE.getMenuSection(), MenuUI.MAIN_FLAVOR_TEXT.getMenuSection());
+        UIHelper.printGradientHeader(MenuUI.TITLE.getMenuSection(), MenuUI.MAIN_FLAVOR_TEXT.getMenuSection());
     }
 
     public static void homeScreenUI(){

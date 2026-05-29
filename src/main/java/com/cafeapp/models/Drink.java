@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class Drink extends MenuItem{
-    private final DrinkSize size;
+    private final DrinkSize label;
     private final DrinkBase category;
     private final ArrayList<ToppingType> toppings;
     private final DrinkSpecialization specialization;
 
-    public Drink(String itemLabel, double basePrice, DrinkSize size, DrinkBase category, ArrayList<ToppingType> toppings, DrinkSpecialization specialization) {
+    public Drink(String itemLabel, double basePrice, DrinkSize label, DrinkBase category, ArrayList<ToppingType> toppings, DrinkSpecialization specialization) {
         super(itemLabel, basePrice);
-        this.size = size;
+        this.label = label;
         this.category = category;
         this.toppings = toppings;
         this.specialization = specialization;
@@ -28,11 +28,11 @@ public class Drink extends MenuItem{
     }
 
     public DrinkSize getSize() {
-        return size;
+        return label;
     }
 
-    public double getCupBaseCost(DrinkSize size) {
-        return size.getBaseCost();
+    public double getCupBaseCost(DrinkSize label) {
+        return label.getBaseCost();
     }
 
     public String getType() {
@@ -60,7 +60,7 @@ public class Drink extends MenuItem{
         double premiumToppingsPrice = 0;
         double boosterToppingsPrice = 0;
 
-        switch(size) {
+        switch(label) {
             case SMALL -> {
                 if (totalPremiumToppings == 1){
                     // if there is a singular premium topping, adds base small premium price
@@ -141,7 +141,7 @@ public class Drink extends MenuItem{
     @Override
     double calculatePrice() {
         //calculates total price of a singular drink object
-        double baseCupCost = getCupBaseCost(size);
+        double baseCupCost = getCupBaseCost(label);
         return baseCupCost + calculateToppingTotal();
     }
 

@@ -5,6 +5,7 @@ import com.cafeapp.models.Order;
 import com.cafeapp.utils.FileUtils;
 import com.cafeapp.utils.InputHelper;
 import com.cafeapp.utils.ListUtils;
+import com.cafeapp.utils.UIHelper;
 
 public class CheckoutScreen {
     private static final Order items = OrderScreen.getOrder();
@@ -16,12 +17,14 @@ public class CheckoutScreen {
     }
 
     public static void confirmOrderDisplay(){
-
+        UIHelper.printGradientHeader("CHECKOUT", "Finalizing your order");
         Choice selectedChoice;
         // stores user's choice
         do{
-            System.out.println("🌙 Confirm your order?");
+
+            System.out.println("\u001B[33m🧾 REVIEW YOUR ORDER:\u001B[0m");
             items.displayOrder();
+            System.out.println("🌙 Confirm your order?");
             confirmOrderUI();
             int choice = InputHelper.readIntInput("Enter in the number of your choice: ");
             selectedChoice = Choice.fromCode(choice).orElse(null);

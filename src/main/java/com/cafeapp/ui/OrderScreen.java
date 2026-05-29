@@ -3,6 +3,7 @@ package com.cafeapp.ui;
 import com.cafeapp.enums.menus.OrderScreenOption;
 import com.cafeapp.models.Order;
 import com.cafeapp.services.DrinkBuilderService;
+import com.cafeapp.services.SeasonalDrinkService;
 import com.cafeapp.services.SideService;
 import com.cafeapp.utils.InputHelper;
 import com.cafeapp.utils.ListUtils;
@@ -14,12 +15,12 @@ public class OrderScreen {
     // created a main order object to store user's items in
 
     private static void orderScreenUI(){
-        UIHelper.printHeader("CURRENT ORDER", "Build your cosmic creation");
+        UIHelper.printGradientHeader("ORDER STATION", "Build your cosmic creation");
 
         if (currentOrder == null || currentOrder.isEmpty()) {
             System.out.println("✨ Your order is currently empty.");
         } else {
-            System.out.println("✨ Items in your order:");
+            System.out.println("\u001B[35m Items in your order:\u001B[0m");
             currentOrder.displayOrder();
         }
 
@@ -57,8 +58,11 @@ public class OrderScreen {
         switch(choice) {
             case ADD_DRINK:
                 // takes user to menu to add a drink to their order
-               DrinkBuilderService.addDrinkUI();
+                DrinkBuilderService.addDrinkUI();
                 UIHelper.printSuccess("Drink added to your order ✨");
+                break;
+            case ADD_SEASONAL_ITEM:
+                SeasonalDrinkService.seasonalDrinkUI();
                 break;
             case ADD_SIDE:
                 // takes user to menu to add sides to their order

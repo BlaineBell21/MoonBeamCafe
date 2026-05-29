@@ -36,23 +36,25 @@ public class Order {
         for (MenuItem item : items){
             System.out.println(item);
         }
+        calculateTotalPrice();
     }
     public String toString(){
         StringBuilder receipt = new StringBuilder();
 
         receipt.append("""
             ==================================
-                 MOONBEAM CAFE RECEIPT
+                 🌙 MOONBEAM CAFE RECEIPT
             ==================================
             
             """);
+        receipt.append("\u001B[36mITEMS:\u001B[0m\n");
         for(MenuItem item : items) {
-            receipt.append(item);
-            receipt.append("\n\n");
+            receipt.append("\u001B[33m").append(item).append("\u001B[0m\n\n");
         }
         receipt.append("""
             ----------------------------------
             """);
+        receipt.append("\u001B[32mTOTAL:\u001B[0m ");
         receipt.append(
                 String.format(
                         "Total: $%.2f%n",
@@ -60,8 +62,43 @@ public class Order {
                 )
         );
         receipt.append("""
-            ==================================
-            """);
+        ========================================
+           ✨ Thank you for visiting MoonBeam ✨
+        ========================================
+        """);
+        return receipt.toString();
+    }
+    public String toReceiptString() {
+        StringBuilder receipt = new StringBuilder();
+
+        receipt.append("""
+        ==================================
+             MOONBEAM CAFE RECEIPT
+        ==================================
+
+        """);
+
+        receipt.append("ITEMS:\n");
+
+        for (MenuItem item : items) {
+            receipt.append(item).append("\n\n");
+        }
+
+        receipt.append("""
+        ----------------------------------
+        """);
+
+        receipt.append(String.format(
+                "TOTAL: $%.2f%n",
+                calculateTotalPrice()
+        ));
+
+        receipt.append("""
+        ==================================
+           Thank you for visiting MoonBeam
+        ==================================
+        """);
+
         return receipt.toString();
     }
 }

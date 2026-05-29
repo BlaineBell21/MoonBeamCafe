@@ -20,6 +20,7 @@ public class DrinkBuilderService {
     // array that stores user's toppings
 
     public static void addDrinkUI(){
+        UIHelper.printGradientHeader("DRINK LAB", "Craft your celestial beverage");
         DrinkSize size = drinkSizeDisplay();
         DrinkBase type = drinkBaseDisplay();
         toppingType();
@@ -37,7 +38,8 @@ public class DrinkBuilderService {
     }
 
     public static DrinkSize drinkSizeDisplay(){
-        System.out.println("Select your drink size: ");
+        UIHelper.printHeader("STEP 1: SIZE SELECTION");
+        UIHelper.printDivider();
         DrinkSize selectedChoice;
         //stores user's choice
         while (true){
@@ -58,13 +60,13 @@ public class DrinkBuilderService {
         //tells user what size cup was selected
         switch (choice) {
             case SMALL -> {
-                System.out.println("small selected");
+                System.out.println("Small selected");
             }
             case MEDIUM ->{
-                System.out.println("medium selected");
+                System.out.println("Medium selected");
             }
             case LARGE ->{
-                System.out.println("large selected");
+                System.out.println("Large selected");
             }
         }
     }
@@ -76,12 +78,13 @@ public class DrinkBuilderService {
     }
 
     public static DrinkBase drinkBaseDisplay(){
-        System.out.println("Select your drink base: ");
+        UIHelper.printHeader("STEP 2: DRINK BASE");
+        UIHelper.printDivider();
         DrinkBase selectedChoice;
         //stores user's choice
         while (true){
             drinkBaseUI();
-            int choice = InputHelper.readIntInput("Enter in the number of your choice: ");
+            int choice = InputHelper.readIntInput("Enter your choice: ");
             selectedChoice = DrinkBase.fromCode(choice).orElse(null);
             //checks if user's choice is a valid input in the DrinkBase enum otherwise returns null
             if (selectedChoice != null) {
@@ -112,7 +115,8 @@ public class DrinkBuilderService {
     }
 
     public static void chooseToppingTypeUI(){
-        System.out.println("Select a topping category:");
+        UIHelper.printHeader("STEP 3: TOPPINGS (COSMIC ADD-ONS)");
+        UIHelper.printDivider();
         System.out.println("1) Premium");
         System.out.println("2) Regular");
         System.out.println("3) Booster");
@@ -146,6 +150,7 @@ public class DrinkBuilderService {
                 if (choice == 2) {
                     return;
                 }
+                break;
             }
         }
     }
@@ -269,7 +274,8 @@ public class DrinkBuilderService {
     }
 
     public static void itemSpecializationUI(){
-        System.out.println("Add specialization to your order: ");
+        UIHelper.printHeader("STEP 4: SPECIAL INFUSION");
+        UIHelper.printDivider();
         ListUtils.genericMenuDisplay(DrinkSpecialization.values());
         System.out.println();
     }

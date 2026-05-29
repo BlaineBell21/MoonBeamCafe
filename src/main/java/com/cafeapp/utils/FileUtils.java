@@ -25,7 +25,7 @@ public class FileUtils {
         File file = new File(folder, fileName);
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-           writer.write(order.toString());
+           writer.write(order.toReceiptString());
            // writes order to new receipt txt file
 
         } catch(IOException e){
