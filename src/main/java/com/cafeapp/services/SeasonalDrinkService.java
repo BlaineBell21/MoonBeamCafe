@@ -3,6 +3,7 @@ package com.cafeapp.services;
 import com.cafeapp.enums.drink.*;
 import com.cafeapp.models.SeasonalDrinkModel;
 import com.cafeapp.ui.OrderScreen;
+import com.cafeapp.utils.Color;
 import com.cafeapp.utils.InputHelper;
 import com.cafeapp.utils.ListUtils;
 import com.cafeapp.utils.UIHelper;
@@ -74,15 +75,54 @@ public class SeasonalDrinkService {
         }
     }
     public static void seasonalDrinkOptions(SeasonalDrink choice){
+        UIHelper.printGradientHeader(
+                "Seasonal Drink Selected",
+                "Limited-time cosmic creations"
+        );
+
+        String title = "";
+        String description = "";
+        String flavorProfile = "";
+
         switch (choice) {
             case PUMPKIN_STARDUST_LATTE -> {
-                System.out.println(SeasonalDrink.PUMPKIN_STARDUST_LATTE.getLabel());
-                System.out.println(SeasonalDrink.PUMPKIN_STARDUST_LATTE.getDescription());
+                title = "Pumpkin Stardust Latte 🎃✨";
+
+                description = """
+                    A warm espresso latte infused with
+                    pumpkin spice flavors and topped
+                    with shimmering stardust sweetness.
+                    """;
+
+                flavorProfile = "Warm • Spiced • Creamy";
             }
+
             case FROSTED_MOONBERRY_ICED_TEA -> {
-                System.out.println(SeasonalDrink.FROSTED_MOONBERRY_ICED_TEA.getLabel());
-                System.out.println(SeasonalDrink.FROSTED_MOONBERRY_ICED_TEA.getDescription());
+                title = "Frosted Moonberry Iced Tea ❄🌙";
+
+                description = """
+                    A chilled moonberry tea blended
+                    with icy citrus notes and finished
+                    with a refreshing frosted twist.
+                    """;
+
+                flavorProfile = "Fruity • Crisp • Refreshing";
             }
         }
+        System.out.println(Color.BOLD + "Seasonal Selection:" + Color.RESET);
+        System.out.println(Color.CYAN + "➜ " + title + Color.RESET);
+
+        UIHelper.printDivider();
+
+        System.out.println(Color.YELLOW + "Description:" + Color.RESET);
+        System.out.println(description);
+
+        UIHelper.printSeparator();
+
+        System.out.println(Color.GREEN + "Flavor Profile:" + Color.RESET);
+        System.out.println("✧ " + flavorProfile);
+
+        UIHelper.printBorder();
+        System.out.println();
     }
 }

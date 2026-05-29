@@ -1,0 +1,23 @@
+==================================
+     MOONBEAM CAFE RECEIPT
+==================================
+
+ITEMS:
+Size: MEDIUM
+Type: Espresso
+Toppings: Brown Sugar Syrup
+Specialization: Galaxy Swirl
+$9.00
+
+
+Name: Frosted Moonberry Iced Tea
+Size: Seasonal Large
+Type: Seasonal
+$3.00
+
+
+----------------------------------
+TOTAL: $12.00
+==================================
+   Thank you for visiting MoonBeam
+==================================
